@@ -1,0 +1,29 @@
+.start-screen{
+    background-color: #404040;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        border-radius: 8px;
+    }
+    @media only screen and (max-width: 800px) {
+
+        @media only screen and (orientation: landscape){
+            img{
+                height: 70%;
+                max-width: 60%;
+            }
+        }
+        @media only screen and (orientation: portrait){
+            img{
+                max-height: 70%;
+                max-width: 60%;
+            }
+        }
+        
+    }
+}
