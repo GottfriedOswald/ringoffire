@@ -1,4 +1,4 @@
-.start-screen{
+.start-screen-container {
     background-color: #404040;
     width: 100vw;
     height: 100vh;
@@ -6,24 +6,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+  }
+  
+  .image-box {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  
     img{
-        border-radius: 8px;
+        border-radius: 16px;
+        width: 90%;
     }
-    @media only screen and (max-width: 800px) {
-
-        @media only screen and (orientation: landscape){
-            img{
-                height: 70%;
-                max-width: 60%;
-            }
-        }
-        @media only screen and (orientation: portrait){
-            img{
-                max-height: 70%;
-                max-width: 60%;
-            }
-        }
-        
-    }
-}
+  }
+  
+  .start-banner-box {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      bottom: 15%;
+      background-color: rgba(64, 64, 64, 0.8);
+  
+      img{
+          width: 25%;
+          margin: -10px;
+  
+          &:hover{
+              cursor: pointer;
+              filter: brightness(1.35);
+          }
+      }
+  }
