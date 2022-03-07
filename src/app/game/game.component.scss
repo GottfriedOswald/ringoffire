@@ -20,9 +20,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    // img{
+    //     position: absolute;
+    //     width: 150px;
+    // }
 }
 
 .card-stock{
     position: absolute;
     width: 150px;
+}
+
+.top-card{
+    transition: all 125ms ease-in-out;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.1) translateX(-10px) translateY(-10px) rotateZ(-5deg) rotateX(25deg) rotateY(-15deg);
+    }
+}
+
+.cardGrabbed{
+    transition: all 125ms ease-in-out;
+    transform: scale(1.5) !important;
 }
