@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-start-screen',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartScreenComponent implements OnInit {
 
-  constructor() { }
+  //sieht aus als ob im Konstruktor eine Variable erstellt wird und dieser der "Router" zugewiesen wird
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  newGame(){
+    //Start a new game
+    //hier wird nun die im Konstruktor erstellte Variable verwendet
+    this.router.navigateByUrl('game');
+  }
 }

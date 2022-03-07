@@ -1,0 +1,9 @@
+<div class="play-container">
+
+    <img class="field-img" src="../../assets/img/bg/tabledesk.jpg" alt="tabledesk as backgroundimage">
+
+    <div class="card-container">
+        <img *ngFor="let c of [0,1,2,3,4]; let i = index;" [ngStyle]="{'right.px' : i * 5}" class="card-stock"
+            src="../../assets/img/cards/card_cover.png" alt="image of a cardcover">
+    </div>
+</div>
