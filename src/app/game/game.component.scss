@@ -41,6 +41,21 @@
 }
 
 .cardGrabbed{
-    transition: all 125ms ease-in-out;
-    transform: scale(1.5) !important;
+    animation: cardGrabbed-Animation 800ms ease-in-out;
+    transform: scale(1) translateY(-330px) rotateZ(5deg);
+}
+
+@keyframes cardGrabbed-Animation {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.5) rotateZ(3deg);
+    }
+    100%{
+        transform: scale(1) translateY(-330px) rotateZ(5deg);
+    }
 }

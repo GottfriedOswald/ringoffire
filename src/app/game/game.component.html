@@ -6,6 +6,7 @@
         <img *ngFor="let c of [0,1,2,3]; let i = index;" [ngStyle]="{'right.px' : i * 4}" class="card-stock"
             src="../../assets/img/cards/card_cover.png" alt="image of a cardcover">
 
-        <img style="right:20px" (click)="takeCard()" [class.cardGrabbed]="cardGrabbed" class="card-stock top-card" src="../../assets/img/cards/card_cover.png" alt="">
+        <img style="right:20px" (click)="takeCard()" class="card-stock top-card" src="../../assets/img/cards/card_cover.png" alt="">
+        <img style="right:20px" (click)="takeCard()" *ngIf="cardGrabbed" class="card-stock top-card cardGrabbed" src="../../assets/img/cards/ace_10.png" alt="">
     </div>
 </div>
