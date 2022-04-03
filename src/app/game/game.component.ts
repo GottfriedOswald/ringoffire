@@ -35,9 +35,9 @@ export class GameComponent implements OnInit {
     } else {
       this.setGrabbedCardAsTrue();
       this.setCurrendCard();
-      this.setCurrendCardToPlayedCards();
       this.gameLogConsole();
       setTimeout(() => {
+        this.setCurrendCardToPlayedCards();
         this.setGrabbedCardAsFalse();
       }, 1000);
     }
