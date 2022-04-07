@@ -13,3 +13,7 @@
         <img style="right:20px" (click)="takeCard()" *ngIf="cardGrabbed" class="card-stock top-card cardGrabbed" src="../../assets/img/cards/{{currendCard}}.png" alt="">
     </div>
 </div>
+
+<button mat-fab color="primary" class="btn-add" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>

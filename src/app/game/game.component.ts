@@ -1,10 +1,12 @@
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddPlayerComponent } from './../dialog-add-player/dialog-add-player.component';
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
   cardGrabbed = false;
@@ -13,7 +15,7 @@ export class GameComponent implements OnInit {
   //eine Variable vom Typ string erstellen die eine Spielkarte aus dem Array (stack) speichert.
   currendCard: string = '';
 
-  constructor() { }
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.newGame();
@@ -21,7 +23,7 @@ export class GameComponent implements OnInit {
 
   gameLogConsole() {
     console.log(this.game);
-  };
+  }
 
   newGame() {
     this.game = new Game();
@@ -41,6 +43,14 @@ export class GameComponent implements OnInit {
         this.setGrabbedCardAsFalse();
       }, 1000);
     }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+    });
   }
 
   setGrabbedCardAsFalse() {
