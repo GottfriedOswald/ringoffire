@@ -41,8 +41,18 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.setCurrendCardToPlayedCards();
         this.setGrabbedCardAsFalse();
+        this.setNextPlayer();
       }, 1000);
     }
+  }
+
+  setNextPlayer(){
+    if (this.game.currentPlayer < 0 || this.game.currentPlayer >= (this.game.players.length-1)) {
+      this.game.currentPlayer = 0;
+    }else{
+      this.game.currentPlayer++;
+    }
+    
   }
 
   openDialog(): void {

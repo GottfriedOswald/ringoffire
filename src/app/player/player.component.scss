@@ -4,13 +4,35 @@
   font-family: "RubikGlitch", sans-serif;
   font-size: 30px;
   color: black;
-  background-color: orange;
+  background-color: grey;
   width: 300px;
   border-radius: 50px 0px 0px 50px;
 
   img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
+  span {
+    margin-left: 16px;
+  }
+}
+
+.active-player{
+  display: flex;
+  align-items: center;
+  font-family: "RubikGlitch", sans-serif;
+  font-size: 30px;
+  color: black;
+  background-color: orange;
+  width: 350px;
+  border-radius: 50px 0px 0px 50px;
+
+  img {
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 100%;
   }

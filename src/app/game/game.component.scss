@@ -70,3 +70,14 @@
     right:32px;
     bottom: 32px;
 }
+
+.gamerule-infocard{
+    position: absolute;
+    top: 75%;
+    bottom: 5%;
+    left: 100px;
+    right: 100px;
+    width: 30%;
+    min-width: 150px;
+    overflow-y: auto;
+}

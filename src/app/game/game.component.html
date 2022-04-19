@@ -1,4 +1,5 @@
-<app-player class="player-card-position" *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px' : 100 + (i * 120)}" [name]="player" ></app-player>
+<app-player class="player-card-position" *ngFor="let player of game.players; let i = index"
+    [ngStyle]="{'top.px' : 100 + (i * 85)}" [activePlayer]="i == game.currentPlayer" [name]="player"></app-player>
 
 <div class="play-container">
 
@@ -8,12 +9,17 @@
         <img *ngFor="let c of [0,1,2,3]; let i = index;" [ngStyle]="{'right.px' : i * 4}" class="card-stock"
             src="../../assets/img/cards/card_cover.png" alt="image of a cardcover">
 
-        <img style="right:20px" (click)="takeCard()" class="card-stock top-card" src="../../assets/img/cards/card_cover.png" alt="">
-        <img *ngFor="let card of game.playedCards" class="card-stock played-Card"  style="right:20px" src="../../assets/img/cards/{{card}}.png" alt="">
-        <img style="right:20px" (click)="takeCard()" *ngIf="cardGrabbed" class="card-stock top-card cardGrabbed" src="../../assets/img/cards/{{currendCard}}.png" alt="">
+        <img style="right:20px" (click)="takeCard()" class="card-stock top-card"
+            src="../../assets/img/cards/card_cover.png" alt="">
+        <img *ngFor="let card of game.playedCards" class="card-stock played-Card" style="right:20px"
+            src="../../assets/img/cards/{{card}}.png" alt="">
+        <img style="right:20px" (click)="takeCard()" *ngIf="cardGrabbed" class="card-stock top-card cardGrabbed"
+            src="../../assets/img/cards/{{currendCard}}.png" alt="">
     </div>
 </div>
 
 <button mat-fab color="primary" class="btn-add" (click)="openDialog()">
     <mat-icon>add</mat-icon>
-  </button>
+</button>
+
+<app-game-info [card]="currendCard" class="gamerule-infocard"></app-game-info>
