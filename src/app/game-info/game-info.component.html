@@ -1,9 +1,9 @@
 <mat-card>
     <mat-card-title>
-        {{title}}
+        {{card ? title : 'Take a Card from top...'}}
     </mat-card-title>
 
     <mat-card-content>
-        {{description}}
+        {{card ? description : '...and make your job!'}}
     </mat-card-content>
 </mat-card>

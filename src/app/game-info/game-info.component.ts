@@ -76,8 +76,8 @@ export class GameInfoComponent implements OnInit, OnChanges {
     },
   ];
 
-  title: string = 'Take a Card from top...';
-  description: string = '...and make your job!';
+  title: string = '';
+  description: string = '';
   @Input() card: string;
 
   constructor() { }
