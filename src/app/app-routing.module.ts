@@ -4,12 +4,13 @@ import { GameComponent } from './game/game.component';
 import { StartScreenComponent } from './start-screen/start-screen.component';
 
 const routes: Routes = [
-  {path:'', component: StartScreenComponent},
-  {path:'game', component: GameComponent}
+  { path: '', component: StartScreenComponent },
+  { path: 'game/:id', component: GameComponent }
+  // { path: 'game', component: GameComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

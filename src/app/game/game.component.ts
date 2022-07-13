@@ -1,7 +1,11 @@
+import { getFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from './../dialog-add-player/dialog-add-player.component';
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
+
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -10,15 +14,31 @@ import { Game } from 'src/models/game';
 })
 export class GameComponent implements OnInit {
   cardGrabbed = false;
+  enoughPlayers: boolean = true;
   game: Game;
 
   //eine Variable vom Typ string erstellen die eine Spielkarte aus dem Array (stack) speichert.
   currendCard: string = '';
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    private route: ActivatedRoute,
+    private firestore: AngularFirestore,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.newGame();
+
+    this.route.params.subscribe((params) => {
+      console.log(params);
+
+      this.firestore
+        .collection('games')
+        .valueChanges()
+        .subscribe((game) => {
+          console.log('Game update!', game);
+        });
+    });
   }
 
   gameLogConsole() {
@@ -28,38 +48,60 @@ export class GameComponent implements OnInit {
   newGame() {
     this.game = new Game();
     this.gameLogConsole();
+    // this.firestore
+    //   .collection('games')
+    //   .add(this.game.toJson());
   }
 
   //checks if game card is clicked
   takeCard() {
-    if (this.cardGrabbed == true) {
-      this.setGrabbedCardAsFalse();
-    } else {
-      this.setGrabbedCardAsTrue();
-      this.setCurrendCard();
-      this.gameLogConsole();
-      setTimeout(() => {
-        this.setCurrendCardToPlayedCards();
+    if (this.checkNumberOfPlayers()) {
+      if (this.cardGrabbed) {
         this.setGrabbedCardAsFalse();
-        this.setNextPlayer();
-      }, 1000);
+      } else {
+        this.setGrabbedCardAsTrue();
+        this.setCurrendCard();
+        this.gameLogConsole();
+        setTimeout(() => {
+          this.setCurrendCardToPlayedCards();
+          this.setGrabbedCardAsFalse();
+          this.setNextPlayer();
+        }, 1000);
+      }
+    } else {
+      console.log('geht');
+      this.enoughPlayers = false;
+      setTimeout(() => {
+        this.enoughPlayers = true;
+      }, 2500);
     }
   }
 
-  setNextPlayer(){
-    if (this.game.currentPlayer < 0 || this.game.currentPlayer >= (this.game.players.length-1)) {
+  checkNumberOfPlayers() {
+    if (this.game.players.length > 1) {
+      return true;
+    } else {
+      console.log('add Player');
+      return false;
+    }
+  }
+
+  setNextPlayer() {
+    if (
+      this.game.currentPlayer < 0 ||
+      this.game.currentPlayer >= this.game.players.length - 1
+    ) {
       this.game.currentPlayer = 0;
-    }else{
+    } else {
       this.game.currentPlayer++;
     }
-    
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
 
     dialogRef.afterClosed().subscribe((name: string) => {
-      if (name != '') {
+      if (name && name.length > 0) {
         this.game.players.push(name);
       }
     });
