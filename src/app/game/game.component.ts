@@ -30,10 +30,12 @@ export class GameComponent implements OnInit {
     this.newGame();
 
     this.route.params.subscribe((params) => {
-      console.log(params);
+      console.log(params['id']);
+      // id = (params,'id');
 
       this.firestore
         .collection('games')
+        .doc(params['id'])
         .valueChanges()
         .subscribe((game) => {
           console.log('Game update!', game);
