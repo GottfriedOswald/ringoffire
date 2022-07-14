@@ -17,6 +17,6 @@ export class StartScreenComponent implements OnInit {
   newGame(){
     //Start a new game
     //hier wird nun die im Konstruktor erstellte Variable verwendet
-    this.router.navigateByUrl('game/:id');
+    this.router.navigateByUrl('game/DGCm3GnXMHBSqqAyUM1n');
   }
 }
