@@ -16,8 +16,6 @@ export class StartScreenComponent implements OnInit {
 
   newGame() {
     let game = new Game();
-    //Start a new game
-    //hier wird nun die im Konstruktor erstellte Variable verwendet
     this.firestore
       .collection('games')
       .add(game.toJson())
