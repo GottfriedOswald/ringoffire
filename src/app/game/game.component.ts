@@ -34,7 +34,7 @@ export class GameComponent implements OnInit {
 
       this.firestore
         .collection('games')
-        .doc('DGCm3GnXMHBSqqAyUM1n')
+        .doc(params['id'])
         .valueChanges()
         .subscribe((game: any) => {
           console.log('Game update!', game);
@@ -53,9 +53,6 @@ export class GameComponent implements OnInit {
   newGame() {
     this.game = new Game();
     this.gameLogConsole();
-    // this.firestore
-    //   .collection('games')
-    //   .add(this.game.toJson());
   }
 
   //checks if game card is clicked
